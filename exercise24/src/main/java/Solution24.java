@@ -55,7 +55,7 @@ public class Solution24 {
         return false;
     }
 
-    private String setOutput(boolean anagram, String string1, String string2) {
+    public String setOutput(boolean anagram, String string1, String string2) {
         // if('anagram')
         if(anagram)
             // output = "/"'string1'/" and /"'string2'/" are anagrams."
