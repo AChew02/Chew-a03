@@ -21,11 +21,12 @@ public class Solution30 {
             }
 
             //print newline
-
+            System.out.println("\n");
         }
     }
 
     public void printFormattedNumber(int num) {
         //print num, right-justified, 5 character spaces
+        System.out.printf("%5d", num);
     }
 }
