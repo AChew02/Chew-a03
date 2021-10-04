@@ -3,8 +3,13 @@
  *  Copyright 2021 Adrian Chew
  */
 
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Solution38 {
+
+    private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
         Solution38 app = new Solution38();
@@ -24,15 +29,18 @@ public class Solution38 {
         evenOutput = app.filterEvenNumbers(input);
 
         //set output
-        output = app.setOutput();
+        output = app.setOutput(evenOutput);
 
         //print output
-
+        System.out.println(output);
     }
 
     private String getStringFromUser() {
         //print user prompt
+        System.out.println("Enter a list of numbers, separated by spaces: ");
+
         //return string input
+        return in.nextLine();
     }
 
     public String filterEvenNumbers(String input) {
@@ -53,13 +61,17 @@ public class Solution38 {
     }
 
     public int[] stringToIntArray(String in) {
+        //declare string array
+        String[] splitString = in.split(" ");
+
         //declare temp integer array
-        int[] temp;
+        int[] temp = new int[splitString.length];
 
-        //loop through length of string
-        for(int i=0; i<(in.length())/2; i++){
+        //loop through length of splitString
+        for(int i=0; i<splitString.length; i++){
+
             //parse int from string into temp array
-
+            temp[i] = Integer.parseInt(splitString[i]);
         }
         //return temp array
         return temp;
@@ -67,28 +79,56 @@ public class Solution38 {
 
     public int[] getEvenInts(int[] ints) {
         //declare temp integer array
-        int[] temp;
+        int[] temp = new int[countEvens(ints)];
 
         //declare array position counter, initialize to 0;
         int arrayPos = 0;
 
-        //loop through inta array
+        //loop through ints array
         for(int i=0; i<ints.length; i++) {
+
             //check if integer is even
             if(ints[i]%2 == 0) {
+
                 //current int to temp array
+                temp[arrayPos] = ints[i];
+
                 //increment arrayPos
+                arrayPos++;
             }
         }
         //return temp array
         return temp;
     }
 
+    public int countEvens(int[] ints) {
+        //declare counter
+        int evens = 0;
+
+        //loop through ints array
+        for(int i=0; i<ints.length; i++) {
+
+            //check if integer is even
+            if(ints[i]%2 == 0) {
+
+                //increment counter
+                evens++;
+            }
+        }
+
+        //return counter
+        return evens;
+    }
+
     public String arrayToString(int[] evens) {
         //return string from converted array
+        return Arrays.stream(evens)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(" "));
     }
 
     public String setOutput(String even) {
         //return output string with evens added
+        return "The even numbers are " + even + ".";
     }
 }

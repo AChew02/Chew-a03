@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Solution38Test {
 
@@ -23,7 +24,7 @@ class Solution38Test {
         int[] actual_arr = app.stringToIntArray(in);
         int[] expected_arr = new int[] {3, 4, 5, 6, 7, 8, 9};
 
-        assertEquals(expected_arr, actual_arr);
+        assertArrayEquals(expected_arr, actual_arr);
     }
 
     @Test
@@ -34,7 +35,18 @@ class Solution38Test {
         int[] actual_even = app.getEvenInts(all);
         int[] expected_even = new int[] {4, 6, 8};
 
-        assertEquals(expected_even, actual_even);
+        assertArrayEquals(expected_even, actual_even);
+    }
+
+    @Test
+    void test_countEvens() {
+        Solution38 app = new Solution38();
+        int[] all = new int[] {3, 4, 5, 6, 7, 8, 9};
+
+        int actual_count = app.countEvens(all);
+        int expected_count = 3;
+
+        assertEquals(expected_count, actual_count);
     }
 
     @Test
